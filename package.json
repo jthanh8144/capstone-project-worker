@@ -1,0 +1,44 @@
+{
+  "name": "capstone-project-worker",
+  "version": "1.0.0",
+  "description": "the source code init in 2023/06/10",
+  "main": "index.js",
+  "license": "ISC",
+  "scripts": {
+    "start": "node dist/main.js",
+    "dev": "nodemon --legacy-watch",
+    "build": "rm -rf dist && tsc --project tsconfig.json",
+    "prepare": "husky install",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix"
+  },
+  "dependencies": {
+    "bull": "4.10.4",
+    "class-transformer": "0.5.1",
+    "dotenv": "16.0.3",
+    "firebase-admin": "11.8.0",
+    "joi": "17.9.1",
+    "nodemailer": "6.9.1",
+    "pg": "8.10.0",
+    "reflect-metadata": "0.1.13",
+    "socket.io": "4.6.1",
+    "typeorm": "0.3.14",
+    "winston": "3.8.2"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "17.5.1",
+    "@commitlint/config-conventional": "17.4.4",
+    "@types/node": "18.15.11",
+    "@types/nodemailer": "6.4.7",
+    "@typescript-eslint/eslint-plugin": "5.57.1",
+    "@typescript-eslint/parser": "5.57.1",
+    "eslint": "8.38.0",
+    "eslint-config-prettier": "8.8.0",
+    "eslint-plugin-prettier": "4.2.1",
+    "husky": "8.0.3",
+    "nodemon": "2.0.22",
+    "prettier": "2.8.7",
+    "ts-node": "10.9.1",
+    "typescript": "5.0.4"
+  }
+}

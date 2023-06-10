@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      dockerfile: docker/Dockerfile.dev
+      context: .
+      args:
+        NODE_IMAGE: ${NODE_IMAGE}
+        APP_PORT: ${APP_PORT}
+    container_name: ${APP_NAME}
+    env_file:
+      - .env
+    ports:
+      - 4000:${APP_PORT}
+    command: sh -c "yarn dev"
+    volumes:
+      - ./:/home/app
+      - ./node_modules:/home/app/node_modules
