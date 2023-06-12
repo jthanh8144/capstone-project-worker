@@ -6,20 +6,8 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   DeleteDateColumn,
-  OneToMany,
   Index,
-  OneToOne,
 } from 'typeorm'
-// import {
-//   Conservation,
-//   ConservationSetting,
-//   FriendRequest,
-//   Message,
-//   Participant,
-//   SignalStore,
-//   UserToken,
-//   VerifyRequest,
-// } from '.'
 
 @Entity({ name: 'users' })
 export class User extends BaseEntity {
@@ -65,34 +53,4 @@ export class User extends BaseEntity {
     name: 'deleted_at',
   })
   deletedAt: Date
-
-  // @OneToMany(() => FriendRequest, (friendRequest) => friendRequest.requester)
-  // requestedFriendRequests: FriendRequest[]
-
-  // @OneToMany(() => FriendRequest, (friendRequest) => friendRequest.receiver)
-  // receivedFriendRequests: FriendRequest[]
-
-  // @OneToMany(() => Conservation, (conservation) => conservation.creator)
-  // conservations: Conservation[]
-
-  // @OneToMany(() => Participant, (participant) => participant.user)
-  // participants: Participant[]
-
-  // @OneToMany(
-  //   () => ConservationSetting,
-  //   (conservationSetting) => conservationSetting.user,
-  // )
-  // conservationSettings: ConservationSetting[]
-
-  // @OneToMany(() => Message, (message) => message.sender)
-  // messages: Message[]
-
-  // @OneToMany(() => UserToken, (userToken) => userToken.user)
-  // userTokens: UserToken[]
-
-  // @OneToMany(() => VerifyRequest, (verifyRequest) => verifyRequest.user)
-  // verifyRequests: VerifyRequest[]
-
-  // @OneToOne(() => SignalStore, (signal) => signal.user)
-  // signalStore: SignalStore[]
 }
