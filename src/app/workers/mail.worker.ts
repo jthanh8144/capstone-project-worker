@@ -11,7 +11,9 @@ class MailWorker {
     await mailQueue.process(async (job: Job, done: DoneCallback) => {
       try {
         const { data } = plainToInstance(MailData, job.data)
-        await mailService.sendMail(data)
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        const { from, ...sendData } = data
+        await mailService.sendMail(sendData)
       } catch (err: any) {
         logger.error(err.message)
       } finally {
