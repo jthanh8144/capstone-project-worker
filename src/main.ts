@@ -3,7 +3,7 @@ import { initializeApp, cert } from 'firebase-admin/app'
 
 import {
   databaseProvider,
-  envLoadProvider,
+  // envLoadProvider,
   socketProvider,
 } from './shared/providers'
 import { cronWorker, eventWorker, mailWorker } from './app/workers'
@@ -12,12 +12,14 @@ import { firebaseConfig } from './shared/configs/firebase.config'
   initializeApp({
     credential: cert(firebaseConfig as any),
   })
-  envLoadProvider.validate()
+  // envLoadProvider.validate()
   await databaseProvider.initialize()
   await socketProvider.initialize()
 
-  eventWorker.initialize()
-  mailWorker.initialize()
-  cronWorker.initialize()
-  cronWorker.addJob()
+  await Promise.all([
+    eventWorker.initialize(),
+    mailWorker.initialize(),
+    cronWorker.initialize(),
+  ])
+  await cronWorker.addJob()
 })()

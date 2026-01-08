@@ -5,11 +5,17 @@ export const pushNotification = async (
   notification: { title: string; body?: string; imageUrl?: string },
 ) => {
   const message = getMessaging()
-  await Promise.all(
-    tokens.map((token) => {
-      if (token) {
-        message.send({ notification, token })
-      }
-    }),
-  )
+  switch (tokens.length) {
+    case 0:
+      break
+    case 1:
+      await message.send({ token: tokens[0], notification })
+      break
+    default:
+      await message.sendEachForMulticast({ tokens, notification })
+  }
+  await message.sendEachForMulticast({
+    tokens,
+    notification,
+  })
 }
